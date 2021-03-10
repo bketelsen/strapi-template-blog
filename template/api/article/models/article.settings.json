@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "articles",
   "info": {
-    "name": "article"
+    "name": "article",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": true
   },
   "attributes": {
     "title": {
@@ -21,27 +23,14 @@
       "type": "richtext",
       "required": true
     },
-    "publishedAt": {
-      "type": "datetime",
-      "required": true
-    },
-    "status": {
-      "type": "enumeration",
-      "enum": [
-        "draft",
-        "published"
-      ],
-      "required": true,
-      "default": "draft"
-    },
     "slug": {
       "type": "uid",
       "targetField": "title",
       "required": true
     },
     "category": {
-      "model": "category",
-      "via": "articles"
+      "via": "articles",
+      "model": "category"
     },
     "image": {
       "model": "file",
@@ -57,6 +46,20 @@
     "author": {
       "via": "articles",
       "model": "writer"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo",
+      "required": true
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "tags": {
+      "via": "articles",
+      "collection": "tags"
     }
   }
 }

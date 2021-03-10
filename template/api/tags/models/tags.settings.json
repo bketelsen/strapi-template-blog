@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "categories",
+  "collectionName": "tags",
   "info": {
-    "name": "category",
+    "name": "Tags",
     "description": ""
   },
   "options": {
@@ -22,7 +22,8 @@
     },
     "articles": {
       "collection": "article",
-      "via": "category"
+      "via": "tags",
+      "dominant": true
     },
     "image": {
       "model": "file",
@@ -31,15 +32,6 @@
         "images"
       ],
       "plugin": "upload",
-      "required": true
-    },
-    "plural": {
-      "type": "string",
-      "required": true
-    },
-    "navigation": {
-      "type": "boolean",
-      "default": true,
       "required": false
     }
   }
